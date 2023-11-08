@@ -1,0 +1,2 @@
+﻿  MuseoVehiculos.cpp
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(8,10): fatal  error C1083: No se puede abrir el archivo incluir: 'glad/glad.h': No such file or directory
