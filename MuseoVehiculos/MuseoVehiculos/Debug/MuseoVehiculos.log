@@ -1,19 +1,19 @@
 ﻿  MuseoVehiculos.cpp
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(10,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(11,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(12,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(13,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(19,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(369,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(370,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(374,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(375,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(377,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(378,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(386,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(10,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(11,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(12,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(13,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(19,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(368,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(369,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(373,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(374,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(376,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(377,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(385,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(init.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(input.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
@@ -29,4 +29,4 @@ glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3
 glfw3.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(wgl_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(egl_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(egl_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 glfw3.lib(osmesa_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(osmesa_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  MuseoVehiculos.vcxproj -> C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\Debug\MuseoVehiculos.exe
+  MuseoVehiculos.vcxproj -> C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\Debug\MuseoVehiculos.exe
