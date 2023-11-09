@@ -184,10 +184,6 @@ int main()
 	// load models
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
-	Model avionAmarillo("resources/objects/avionAmarillo/avionAmarillo.obj");
-	Model avionDespegue("resources/objects/avionDespegue/avionDespegue.obj");
-	Model avionGuerra("resources/objects/avionGuerra/avionGuerra.obj");
-	Model helicopteroDron("resources/objects/helicopteroDron/helicopteroDron.obj");
 
 
 	// draw in wireframe
@@ -290,16 +286,6 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
-
-	/*	model = glm::translate(glm::mat4(1.0f), glm::vec3(170.0f, 80.0f, 90.0f));
-		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(20.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f));
-		staticShader.setMat4("model", model);
-		avionGuerra.Draw(staticShader);*/
-
-
-
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
