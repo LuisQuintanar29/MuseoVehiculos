@@ -1,0 +1,34 @@
+﻿  glad.c
+  MuseoVehiculos.cpp
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(10,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(11,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(12,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(13,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(19,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(354,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(355,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(359,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(360,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(362,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(363,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos.cpp(371,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  LINK : no se encontró C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\Debug\MuseoVehiculos.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+glfw3.lib(context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(init.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(init.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(input.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(monitor.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(vulkan.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(vulkan.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(window.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_init.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_init.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_joystick.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_joystick.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_monitor.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_monitor.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_time.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_time.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_thread.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_thread.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(win32_window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(wgl_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(wgl_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(egl_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(egl_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(osmesa_context.obj) : warning LNK4099: no se encontró PDB '' con 'glfw3.lib(osmesa_context.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+  MuseoVehiculos.vcxproj -> C:\Users\luise\Documents\GitHub\MuseoVehiculos\MuseoVehiculos\MuseoVehiculos\Debug\MuseoVehiculos.exe
