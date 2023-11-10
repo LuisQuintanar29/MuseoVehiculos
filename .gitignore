@@ -1,7 +1,6 @@
 MuseoVehiculos/*.vs
 MuseoVehiculos/Debug/
 MuseoVehiculos/x64/
-MuseoVehiculos/*.txt
 MuseoVehiculos/*.sln
 MuseoVehiculos/MuseoVehiculos/*.vcxproj
 MuseoVehiculos/MuseoVehiculos/*.vcxproj.filters
