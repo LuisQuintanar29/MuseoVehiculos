@@ -1,8 +1,8 @@
-*.vs
-Debug/
-x64/
-*.txt
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+MuseoVehiculos/*.vs
+MuseoVehiculos/Debug/
+MuseoVehiculos/x64/
+MuseoVehiculos/*.txt
+MuseoVehiculos/*.sln
+MuseoVehiculos/MuseoVehiculos/*.vcxproj
+MuseoVehiculos/MuseoVehiculos/*.vcxproj.filters
+MuseoVehiculos/MuseoVehiculos/*.vcxproj.user
