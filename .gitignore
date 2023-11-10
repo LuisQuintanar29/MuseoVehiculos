@@ -1,0 +1,7 @@
+MuseoVehiculos/*.vs
+MuseoVehiculos/Debug/
+MuseoVehiculos/x64/
+MuseoVehiculos/*.sln
+MuseoVehiculos/MuseoVehiculos/*.vcxproj
+MuseoVehiculos/MuseoVehiculos/*.vcxproj.filters
+MuseoVehiculos/MuseoVehiculos/*.vcxproj.user
