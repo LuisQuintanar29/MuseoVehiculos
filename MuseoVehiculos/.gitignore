@@ -1,8 +1,0 @@
-*.vs
-Debug/
-x64/
-*.txt
-*.sln
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
