@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MuseoVehiculos", "MuseoVehiculos\MuseoVehiculos.vcxproj", "{F973653B-33C5-4CA2-AE53-523FF7AC0513}"
+=======
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MuseoVehiculos", "MuseoVehiculos\MuseoVehiculos.vcxproj", "{2B79766E-3044-42EA-BDDB-A7C5E3E05841}"
+>>>>>>> origin/main:MuseoVehiculos/MuseoVehiculos.sln
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,7 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Debug|x64.ActiveCfg = Debug|x64
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Debug|x64.Build.0 = Debug|x64
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Debug|x86.ActiveCfg = Debug|Win32
@@ -21,11 +26,25 @@ Global
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Release|x64.Build.0 = Release|x64
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Release|x86.ActiveCfg = Release|Win32
 		{F973653B-33C5-4CA2-AE53-523FF7AC0513}.Release|x86.Build.0 = Release|Win32
+=======
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Debug|x64.ActiveCfg = Debug|x64
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Debug|x64.Build.0 = Debug|x64
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Debug|x86.ActiveCfg = Debug|Win32
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Debug|x86.Build.0 = Debug|Win32
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Release|x64.ActiveCfg = Release|x64
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Release|x64.Build.0 = Release|x64
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Release|x86.ActiveCfg = Release|Win32
+		{2B79766E-3044-42EA-BDDB-A7C5E3E05841}.Release|x86.Build.0 = Release|Win32
+>>>>>>> origin/main:MuseoVehiculos/MuseoVehiculos.sln
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
 		SolutionGuid = {7D38DA7B-1A08-4DA2-BA96-BD12CAB40E30}
+=======
+		SolutionGuid = {6F263EED-2C0D-474A-A608-7697CF98566C}
+>>>>>>> origin/main:MuseoVehiculos/MuseoVehiculos.sln
 	EndGlobalSection
 EndGlobal

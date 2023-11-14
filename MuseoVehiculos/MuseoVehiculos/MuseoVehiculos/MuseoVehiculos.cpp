@@ -183,7 +183,11 @@ int main()
 
 	// load models
 	// -----------
+	
+	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
+	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model piso("resources/objects/piso/piso.obj");
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 	Model avionAmarillo("resources/objects/avionAmarillo/avionAmarillo.obj");
 	Model avionDespegue("resources/objects/avionDespegue/avionDespegue.obj");
 	Model avionGuerra("resources/objects/avionGuerra/avionGuerra.obj");
@@ -193,6 +197,8 @@ int main()
 	Model submarino("resources/objects/submarino/submarino.obj");
 	Model YateFantasia("resources/objects/YateFantasia/yateFantasia.obj");
 	Model avionMarino("resources/objects/avionMarino/avionMarino.obj");
+=======
+>>>>>>> origin/main:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -294,6 +300,7 @@ int main()
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
 
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(130.0f,.1f, -300.0f));
 		//model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.5f));
@@ -324,6 +331,19 @@ int main()
 		staticShader.setMat4("model", model);
 		avionDespegue.Draw(staticShader);
 
+=======
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		pisoArbustos.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		pisoCercas.Draw(staticShader);
+>>>>>>> origin/main:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
