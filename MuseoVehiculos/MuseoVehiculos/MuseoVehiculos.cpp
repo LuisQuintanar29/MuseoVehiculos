@@ -185,6 +185,7 @@ int main()
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
 	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
+	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 
 
 	// draw in wireframe
@@ -293,6 +294,12 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		pisoArbustos.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		pisoCercas.Draw(staticShader);
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
