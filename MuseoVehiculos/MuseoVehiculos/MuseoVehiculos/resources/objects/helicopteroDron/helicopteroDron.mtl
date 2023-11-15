@@ -12,5 +12,5 @@ newmtl Dron_DL_3_MODEL_RIGING_Dron_DL_3
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka _color_1_.png
-	map_Kd _color_1_.png
+	map_Ka _color_2_.png
+	map_Kd _color_2_.png

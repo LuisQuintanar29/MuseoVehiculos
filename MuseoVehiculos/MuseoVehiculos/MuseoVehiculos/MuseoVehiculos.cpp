@@ -345,6 +345,29 @@ int main()
 		staticShader.setMat4("model", model);
 		pisoCercas.Draw(staticShader);
 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.0f, 10.0f, -170.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.85f));
+		staticShader.setMat4("model", model);
+		avionMarino.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(45.0f, .1f, -140.0f));
+		model = glm::rotate(model, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.052));
+		staticShader.setMat4("model", model);
+		submarino.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, .1f, -330.0f));
+		model = glm::rotate(model, glm::radians(235.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.85f));
+		staticShader.setMat4("model", model);
+		YateFantasia.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-30.0f, .1f, -360.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.85f));
+		staticShader.setMat4("model", model);
+		boteVeloz.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
