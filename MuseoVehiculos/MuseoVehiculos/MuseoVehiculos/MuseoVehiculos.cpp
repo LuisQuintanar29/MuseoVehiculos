@@ -197,6 +197,12 @@ int main()
 	Model submarino("resources/objects/submarino/submarino.obj");
 	Model YateFantasia("resources/objects/YateFantasia/yateFantasia.obj");
 	Model avionMarino("resources/objects/avionMarino/avionMarino.obj");
+	Model starwars("resources/objects/starwars/starwars.obj");
+	Model vaisseau("resources/objects/Vaisseau/vassieau.obj");
+	Model cruceroEspacial("resources/objects/cruceroEspacial/cruceroEspacial.obj");
+	Model luminaris("resources/objects/Luminaris/luminaris.obj");
+
+
 
 
 	// Ojala se cambie algo
@@ -368,6 +374,30 @@ int main()
 		model = glm::scale(model, glm::vec3(0.85f));
 		staticShader.setMat4("model", model);
 		boteVeloz.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 50.0f, -290.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		vaisseau.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 0.1f, -290.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		starwars.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 90.0f, -290.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		cruceroEspacial.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 150.0f, -290.0f));
+		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f));
+		staticShader.setMat4("model", model);
+		luminaris.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
