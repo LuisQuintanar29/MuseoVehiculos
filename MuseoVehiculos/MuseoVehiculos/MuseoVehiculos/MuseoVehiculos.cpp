@@ -375,27 +375,29 @@ int main()
 		staticShader.setMat4("model", model);
 		boteVeloz.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 50.0f, -290.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 120.0f, -260.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(-20.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
 		vaisseau.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 0.1f, -290.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-230.0f, 90.0f, -340.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(6.0f));
 		staticShader.setMat4("model", model);
 		starwars.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 90.0f, -290.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 200.0f, -450.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::scale(model, glm::vec3(1.70f));
 		staticShader.setMat4("model", model);
 		cruceroEspacial.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 150.0f, -290.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-235.0f, 0.01f, -315.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
 		luminaris.Draw(staticShader);
 
