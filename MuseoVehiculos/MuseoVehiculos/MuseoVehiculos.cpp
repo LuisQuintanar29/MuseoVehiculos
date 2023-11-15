@@ -187,6 +187,8 @@ int main()
 	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
 	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model piso("resources/objects/piso/piso.obj");
+
+	// Ojala se cambie algo
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
