@@ -45,7 +45,7 @@ GLFWmonitor* monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 10.0f, 90.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -65,6 +65,20 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 glm::vec3 lightColor = glm::vec3(0.7f);
 glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
+
+// Variabiles para animacion de avion
+bool animacionAvion = true;
+float avionMovX = 345.0f;
+float avionMovY = 0.1f;
+float avionMovZ = -150.0f;
+float orientacionAvionX = 0.0f;
+float orientacionAvionY = 180.0f;
+float movAuxX = 0.0f;
+float movAuxY = 0.0f;
+float movAuxZ = 0.0f;
+float angulo = 0.0f;
+float giroAvion = 0.0f;
+int estadoAvion = 0;
 
 
 
@@ -95,6 +109,40 @@ void animate(void)
 	if (play)
 	{
 
+
+	}
+
+
+	if (animacionAvion)
+	{
+		if (estadoAvion == 0) {
+			avionMovZ -= 0.1f;
+			if (avionMovZ <= -50.0f) {
+				std::cout << "Termina el estado 0" << std::endl;
+				estadoAvion = 1;
+			}
+		}
+		if (estadoAvion == 1) {
+			avionMovY += 0.1 * 0.625f;
+			avionMovZ -= 0.1f;
+
+			if (avionMovY >= 50.0f) {
+				std::cout << "Coord Y" << avionMovY << "Coord Z" << avionMovZ << std::endl;
+				estadoAvion = 2;
+			}
+		}
+		if (estadoAvion == 2) {
+			angulo -= 0.01;
+			avionMovX = 55 * cos(angulo) - 55;
+			avionMovZ = sqrt((55 * 55) - (cos(angulo) * cos(angulo))) * sin(angulo) - 131;
+
+
+			std::cout << "X: " << avionMovX << ", Z: " << avionMovZ << ", Angulo: " << angulo << std::endl;
+			if (avionMovX <= -109.0f) {
+				estadoAvion = 3;
+			}
+
+		}
 
 	}
 
@@ -332,9 +380,10 @@ int main()
 		staticShader.setMat4("model", model);
 		helicopteroGuerra.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(345.0f, .1f, -150.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(35.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f + avionMovX, 0.0f + avionMovY, 0.0f + avionMovZ));
+		model = glm::rotate(model, glm::radians(orientacionAvionY), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(orientacionAvionX), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.5f));
 		staticShader.setMat4("model", model);
 		avionDespegue.Draw(staticShader);
 
