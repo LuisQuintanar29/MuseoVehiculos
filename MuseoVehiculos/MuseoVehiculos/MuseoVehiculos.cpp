@@ -84,8 +84,6 @@ int FrameIndex = 0;//introducir número en caso de tener Key guardados
 bool play = false;
 int playIndex = 0;
 
-//Audio
-bool audioPlaying = true;
 void animate(void)
 {
 	if (play)
@@ -176,11 +174,6 @@ int main()
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
-	//Audio
-	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-	printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-	return -1;
-	}
 	// Definición de los vértices del plano
 	std::vector<float> vertices ={
 	};
@@ -255,23 +248,6 @@ int main()
 	
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//// Audio
-	SDL_AudioSpec spec;
-	Uint32 lengthAudio;
-	Uint8* buffer;
-	spec.freq = 44100;  // Frecuencia de muestreo
-	spec.format = AUDIO_S16SYS;  // Formato de audio (16 bits, little-endian)
-	spec.channels = 2;  // Número de canales (estéreo)
-	spec.samples = 1024;  // Tamaño del búfer de audio
-	if (SDL_LoadWAV("resources/audio/wave.wav", &spec, &buffer, &lengthAudio) == NULL) {
-		printf("No se pudo cargar el archivo de sonido: %s\n", SDL_GetError());
-		return -1;
-	}
-	// Abrir el dispositivo de audio
-	if (SDL_OpenAudio(&spec, NULL) < 0) {
-		printf("SDL could not open audio: %s\n", SDL_GetError());
-		return -1;
-	}
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -285,12 +261,6 @@ int main()
 		// input
 		// -----
 		//my_input(window);
-		animate();
-		SDL_PauseAudio(0);
-		if (audioPlaying && SDL_GetAudioStatus() != SDL_AUDIO_PLAYING) {
-			SDL_QueueAudio(1, buffer, lengthAudio);
-			SDL_PauseAudio(0);  // Iniciar la reproducción
-		}
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -464,12 +434,6 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
-	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS && action == GLFW_PRESS) {
-		audioPlaying = !audioPlaying;
-		if (!audioPlaying) {
-			SDL_PauseAudio(1);  // Pausar la reproducción
-		}
-	}
 	std::cout << "X: " << camera.Position.x;
 	std::cout << "Y: " << camera.Position.y;
 	std::cout << "Z: " << camera.Position.z << std::endl;
