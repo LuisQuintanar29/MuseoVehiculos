@@ -75,7 +75,7 @@ float orientacionAvionY = 180.0f;
 float movAuxX = 0.0f;
 float movAuxY = 0.0f;
 float movAuxZ = 0.0f;
-float angulo = 0.0f;
+float anguloAvion = 0.0f;
 float giroAvion = 0.0f;
 int estadoAvion = 0;
 
@@ -111,28 +111,77 @@ void animate(void)
 
 	}
 
-
 	if (animacionAvion)
 	{
 		if (estadoAvion == 0) {
 			avionMovZ -= 3.0f;
-			if (avionMovZ <= -50.0f) {
+			if (avionMovZ <= -300.0f) {
 				std::cout << "Termina el estado 0" << std::endl;
 				estadoAvion = 1;
 			}
 		}
 		if (estadoAvion == 1) {
-			avionMovY += 3.0f * 0.75f;
-			avionMovZ -= 3.0f;
+			avionMovY += 3.0f;
+			avionMovZ -= 3.0f * 0.75;
+			orientacionAvionX == -30.0f;
 
 			if (avionMovY >= 200.0f) {
-				std::cout << "Coord Y" << avionMovY << "Coord Z" << avionMovZ << std::endl;
 				estadoAvion = 2;
 			}
 		}
 		if (estadoAvion == 2) {
-
+			anguloAvion -= 0.01;
+			avionMovX = 200 * cos(anguloAvion) + 145;
+			avionMovZ = sqrt((200 * 55) - (cos(anguloAvion) * cos(anguloAvion))) * sin(anguloAvion) - 450.75;
+			orientacionAvionY = -90.0f;
+			if (anguloAvion <= -3.15) {
+				estadoAvion = 3;
+			}
 		}
+
+		if (estadoAvion == 3) {
+			avionMovZ += 3.0;
+			orientacionAvionY = 0.0f;
+			if (avionMovZ >= 100.0f) {
+				estadoAvion = 4;
+			}
+		}
+
+		if (estadoAvion == 4) {
+			anguloAvion -= 0.01;
+			avionMovX = 200 * cos(anguloAvion) + 147;
+			avionMovZ = sqrt((200 * 55) - (cos(anguloAvion) * cos(anguloAvion))) * sin(anguloAvion) + 100;
+			orientacionAvionY = -270.0f;
+			if (anguloAvion <= -6.30) {
+				std::cout << "Termina Estado 4:" << std::endl;
+				estadoAvion = 5;
+				anguloAvion == 0.0f; 
+				
+			}
+			
+		}
+
+		if (estadoAvion == 5) {
+			avionMovY -= 3.0f;
+			avionMovZ -= 3.0f * 0.80;
+			orientacionAvionY = -180.0f;
+			
+
+			if (avionMovY <= 0.1f) {
+				estadoAvion = 6;
+				std::cout << "Termina Estado 5: Coord Z" << avionMovZ << "Coord Y" << avionMovY << std::endl;
+			}
+		}
+
+		if (estadoAvion == 6) {
+			avionMovZ -= 3.0f;
+
+			if (avionMovZ <= 150.0f) {
+				estadoAvion = 7;
+			}
+		}
+
+
 
 	}
 
@@ -311,7 +360,6 @@ int main()
 
 
 
-	// Ojala se cambie algo
 
 	float time = 0.0f;
 
@@ -435,13 +483,11 @@ int main()
 
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(130.0f,.1f, -300.0f));
-		//model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.5f));
 		staticShader.setMat4("model", model);
 		avionAmarillo.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, .1f, -300.0f));
-		//model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.0f));
 		staticShader.setMat4("model", model);
 		avionGuerra.Draw(staticShader);
@@ -480,7 +526,7 @@ int main()
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.0f, 10.0f, -170.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.85f));
+		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
 		avionMarino.Draw(staticShader);
 
@@ -490,13 +536,13 @@ int main()
 		staticShader.setMat4("model", model);
 		submarino.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, .1f, -330.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, .1f, -340.0f));
 		model = glm::rotate(model, glm::radians(235.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.85f));
 		staticShader.setMat4("model", model);
 		YateFantasia.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-30.0f, .1f, -360.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-30.0f, .1f, -370.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.85f));
 		staticShader.setMat4("model", model);
@@ -590,6 +636,14 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
+		(estadoAvion = 0);
+		avionMovX = 345.0f;
+		avionMovY = 0.1f;
+		avionMovZ = -150.0f;
+		anguloAvion = 0.0f;
+	}
+	
 
 }
 
