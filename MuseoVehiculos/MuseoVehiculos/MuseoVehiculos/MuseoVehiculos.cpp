@@ -14,6 +14,7 @@
 #include <time.h>
 #include <vector>
 #include <filesystem>
+
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>  //Texture
 
@@ -72,11 +73,8 @@ rotInc = 0.0f,
 giroMonitoInc = 0.0f;
 
 // camera
-<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
-Camera camera(glm::vec3(0.0f, 50.0f, 290.0f));
-=======
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
->>>>>>> 051a65c9e220d4d3d4fe265a9630ccda2001959e:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
+
+Camera camera(glm::vec3(0.0f, 30.0f, 490.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -154,9 +152,8 @@ void animate(void)
 			movAuto_x += -1.0f;
 			if (movAuto_x <= -150.0)
 				circuito_auto = 2;
-
-<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 		}
+
 		if (circuito_auto == 2)
 		{
 			movAuto_z -= 1.0f;
@@ -304,7 +301,7 @@ void animate(void)
 				recorrido = 6;
 		}
 	}
-=======
+
 	if (animacionAvion)
 	{
 		if (estadoAvion == 0) {
@@ -323,14 +320,16 @@ void animate(void)
 				estadoAvion = 2;
 			}
 		}
-		if (estadoAvion == 2) {
+		if (estadoAvion == 2) 
+		{
 			angulo -= 0.01;
 			avionMovX = 55 * cos(angulo) - 55;
 			avionMovZ = sqrt((55 * 55) - (cos(angulo) * cos(angulo))) * sin(angulo) - 131;
 
 
 			std::cout << "X: " << avionMovX << ", Z: " << avionMovZ << ", Angulo: " << angulo << std::endl;
-			if (avionMovX <= -109.0f) {
+			if (avionMovX <= -109.0f)
+			{
 				estadoAvion = 3;
 			}
 
@@ -339,8 +338,17 @@ void animate(void)
 	}
 
 
->>>>>>> 051a65c9e220d4d3d4fe265a9630ccda2001959e:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
+
 }
+
+void getResolution()
+{
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+	SCR_WIDTH = mode->width;
+	SCR_HEIGHT = (mode->height) - 80;
+}
+
 void generateWaves(std::vector<float>& vertices, std::vector<unsigned int>& indices, int numWaves, float length, float amplitude, float time) {
 	// Limpiar el vector de vértices e índices
 	vertices.clear();
@@ -369,13 +377,7 @@ void generateWaves(std::vector<float>& vertices, std::vector<unsigned int>& indi
 }
 
 
-void getResolution()
-{
-	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
-	SCR_WIDTH = mode->width;
-	SCR_HEIGHT = (mode->height) - 80;
-}
 
 
 int main()
@@ -397,7 +399,7 @@ int main()
 	monitors = glfwGetPrimaryMonitor();
 	getResolution();
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Proyecti Final CGeIHC", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Proyecto Final CGeIHC", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -487,17 +489,18 @@ int main()
 	// -----------
 	Model mapa("resources/objects/piso/mapa.obj");
 	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
-<<<<<<< HEAD
+
 	//Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model piso("resources/objects/piso/piso.obj");
-	//Model Auto("resources/objects/auto/auto.obj");
 
+	Model Auto("resources/objects/auto/auto.obj");
 	Model auto3("resources/objects/auto3/auto3.obj");
-	//Model auto8("resources/objects/auto8/auto8.obj");
-	//Model Cadillac("resources/objects/Cadillac/cadilla.obj");
-	//Model vespacial("resources/objects/vespacial/vehiculoespacial.obj");
+	Model auto6("resources/objects/auto6/auto6.obj");
+	Model auto8("resources/objects/auto8/auto8.obj");
+	Model vespacial("resources/objects/vespacial/vehiculoespacial.obj");
+	Model Cadillac("resources/objects/Cadillac/cadilla.obj");
 
-	ModelAnim animacionPersonaje("resources/objects/Walking/Walking.dae");
+	//ModelAnim animacionPersonaje("resources/objects/Walking/Walking.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
 	//ModelAnim animacionPersonaje1("resources/objects/WalkForward/WalkForward.dae");
@@ -505,13 +508,15 @@ int main()
 
 	//ModelAnim animacionPersonaje2("resources/objects/KneelingPointing/KneelingPointing.dae");
 	//animacionPersonaje2.initShaders(animShader.ID);
-=======
+
+	
+
+
+	float time = 0.0f;
+	/*
 	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model pisoMesas("resources/objects/piso/pisoMesas.obj");
 	Model recepcion("resources/objects/piso/recepcion.obj");
->>>>>>> 7dad23ae23add7cbb78eba714f8cef74d8165d60
-
-	float time = 0.0f;
 
 	Model avionAmarillo("resources/objects/avionAmarillo/avionAmarillo.obj");
 	Model avionDespegue("resources/objects/avionDespegue/avionDespegue.obj");
@@ -525,7 +530,7 @@ int main()
 	Model starwars("resources/objects/starwars/starwars.obj");
 	Model vaisseau("resources/objects/Vaisseau/vassieau.obj");
 	Model cruceroEspacial("resources/objects/cruceroEspacial/cruceroEspacial.obj");
-	Model luminaris("resources/objects/Luminaris/luminaris.obj");
+	Model luminaris("resources/objects/Luminaris/luminaris.obj");*/
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -542,6 +547,7 @@ int main()
 		// input
 		// -----
 		//my_input(window);
+		animate();
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -646,44 +652,89 @@ int main()
 		staticShader.setMat4("model", model);
 		mapa.Draw(staticShader);
 
+		// auto
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		Auto.Draw(staticShader);
+		
+		// auto6
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		auto6.Draw(staticShader);
+
+		// auto8
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		auto8.Draw(staticShader);
+
+		// Cadillac
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-35.0f + movAuto_x, -1.0f, movAuto_z));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		staticShader.setMat4("model", model);
+		Cadillac.Draw(staticShader);
+		// -------------------------------------------------------------------------------------------------------------------------
+
+		// Vespacial
+		// -------------------------------------------------------------------------------------------------------------------------
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-85.0f + movAuto_x, 1.0f, movAuto_z));
+		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		staticShader.setMat4("model", model);
+		vespacial.Draw(staticShader);/**/
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(130.0f,.1f, -300.0f));
 		//model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.5f));
 		staticShader.setMat4("model", model);
-		avionAmarillo.Draw(staticShader);
+		//avionAmarillo.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(250.0f, .1f, -300.0f));
 		//model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.0f));
 		staticShader.setMat4("model", model);
-		avionGuerra.Draw(staticShader);
+		//avionGuerra.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(140.0f, .1f, -170.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(60.0f));
 		staticShader.setMat4("model", model);
-		helicopteroDron.Draw(staticShader);
+		//helicopteroDron.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(300.0f, .1f, -170.0f));
 		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(7.0f));
 		staticShader.setMat4("model", model);
-		helicopteroGuerra.Draw(staticShader);
+		//helicopteroGuerra.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f + avionMovX, 0.0f + avionMovY, 0.0f + avionMovZ));
 		model = glm::rotate(model, glm::radians(orientacionAvionY), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(orientacionAvionX), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.5f));
 		staticShader.setMat4("model", model);
-		avionDespegue.Draw(staticShader);
+		//avionDespegue.Draw(staticShader);
 
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
-		pisoArbustos.Draw(staticShader);
+		//pisoArbustos.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
@@ -695,79 +746,82 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
-		pisoMesas.Draw(staticShader);
+		//pisoMesas.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.0f, 10.0f, -170.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.85f));
 		staticShader.setMat4("model", model);
-		avionMarino.Draw(staticShader);
+		//avionMarino.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(45.0f, .1f, -140.0f));
 		model = glm::rotate(model, glm::radians(-30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.052));
 		staticShader.setMat4("model", model);
-		submarino.Draw(staticShader);
+		//submarino.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(70.0f, .1f, -330.0f));
 		model = glm::rotate(model, glm::radians(235.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.85f));
 		staticShader.setMat4("model", model);
-		YateFantasia.Draw(staticShader);
+		//YateFantasia.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-30.0f, .1f, -360.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.85f));
 		staticShader.setMat4("model", model);
-		boteVeloz.Draw(staticShader);
+		//boteVeloz.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, 120.0f, -260.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(-20.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
-		vaisseau.Draw(staticShader);
+		//vaisseau.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-230.0f, 90.0f, -340.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 		model = glm::scale(model, glm::vec3(6.0f));
 		staticShader.setMat4("model", model);
-		starwars.Draw(staticShader);
+		//starwars.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-180.0f, 200.0f, -450.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.70f));
 		staticShader.setMat4("model", model);
-		cruceroEspacial.Draw(staticShader);
+		//cruceroEspacial.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-235.0f, 0.01f, -315.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
-		luminaris.Draw(staticShader);
+		//luminaris.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
-		recepcion.Draw(staticShader);
+		//recepcion.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
+		//AUTOMOVILES
 		// auto3
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(100.0f, -1.0f, 100.0f));
 		model = glm::translate(model, glm::vec3(-28.0f + movAuto_x, -1.0f, 345.0 + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.004f));
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
 		staticShader.setMat4("model", model);
 		auto3.Draw(staticShader);
+
 		
-		/*
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(100.0f, 0.0f, 40.0f)); // translate it down so it's at the center of the scene
+		
+		
+		
+		/*model = glm::translate(glm::mat4(1.0f), glm::vec3(100.0f, 0.0f, 40.0f)); // translate it down so it's at the center of the scene
 		model = glm::scale(model, glm::vec3(0.3f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
@@ -780,38 +834,7 @@ int main()
 		animShader.setMat4("model", model);
 		animacionPersonaje2.Draw(animShader);*/
 
-			// auto
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
-		staticShader.setMat4("model", model);
-		Auto.Draw(staticShader);
-
-		*/
-
-		// Cadillac
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-35.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
-		staticShader.setMat4("model", model);
-		Cadillac.Draw(staticShader);*/
-		// -------------------------------------------------------------------------------------------------------------------------
-
-		// Vespacial
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-85.0f + movAuto_x, 1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
-		staticShader.setMat4("model", model);
-		vespacial.Draw(staticShader);*/
+		/**/
 		// ----------------------------
 		//-------------------------------------------------------------------------------------
 		// draw skybox as last
@@ -859,8 +882,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
-<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
-<<<<<<< HEAD
+
 
 	//animacion
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
@@ -882,15 +904,13 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		animacion = false;
 		recorrido = 0;
 		anim = !anim;
+		circuito_auto = 0;
 
 	}
-=======
 	std::cout << "X: " << camera.Position.x;
 	std::cout << "Y: " << camera.Position.y;
 	std::cout << "Z: " << camera.Position.z << std::endl;
->>>>>>> 7dad23ae23add7cbb78eba714f8cef74d8165d60
-=======
->>>>>>> 051a65c9e220d4d3d4fe265a9630ccda2001959e:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
+
 }
 
 
