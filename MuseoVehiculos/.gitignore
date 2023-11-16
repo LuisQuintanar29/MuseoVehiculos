@@ -1,6 +1,4 @@
-.vs/
-x64/
-Debug/
-MuseoVehiculos.vcxproj.user
-MuseoVehiculos.vcxproj
-MuseoVehiculos.vcxproj.filters
+.vs
+Debug
+x64
+*.rar
