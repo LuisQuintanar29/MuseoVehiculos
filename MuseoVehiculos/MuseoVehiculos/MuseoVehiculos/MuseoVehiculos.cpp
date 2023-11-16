@@ -1,5 +1,4 @@
-﻿
-/*---------------------------------------------------------*/
+﻿/*---------------------------------------------------------*/
 /* ----------------  Práctica                   -----------*/
 /*-----------------    2024-1   ---------------------------*/
 /*------------- Alumno:                     ---------------*/
@@ -13,8 +12,8 @@
 #include <glm/gtc/matrix_transform.hpp>   //camera y model
 #include <glm/gtc/type_ptr.hpp>
 #include <time.h>
-
-
+#include <vector>
+#include <filesystem>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>  //Texture
 
@@ -41,7 +40,7 @@ void animate(void);
 unsigned int SCR_WIDTH = 800;
 unsigned int SCR_HEIGHT = 600;
 GLFWmonitor* monitors;
-
+GLuint VBO[2], VAO[2], EBO[2];
 void getResolution(void);
 
 // camera
@@ -66,6 +65,7 @@ glm::vec3 lightColor = glm::vec3(0.7f);
 glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 glm::vec3 ambientColor = diffuseColor * glm::vec3(0.75f);
 
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 // Variabiles para animacion de avion
 bool animacionAvion = true;
 float avionMovX = 345.0f;
@@ -82,6 +82,8 @@ int estadoAvion = 0;
 
 
 
+=======
+>>>>>>> 72a9c6931918ff8703df6a7c95e032166ad6124a:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 #define MAX_FRAMES 9
 int i_max_steps = 60;
 int i_curr_steps = 0;
@@ -101,9 +103,8 @@ int FrameIndex = 0;//introducir número en caso de tener Key guardados
 bool play = false;
 int playIndex = 0;
 
-
-
-
+//Audio
+bool audioPlaying = true;
 void animate(void)
 {
 	if (play)
@@ -148,6 +149,33 @@ void animate(void)
 
 
 }
+void generateWaves(std::vector<float>& vertices, std::vector<unsigned int>& indices, int numWaves, float length, float amplitude, float time) {
+	// Limpiar el vector de vértices e índices
+	vertices.clear();
+	indices.clear();
+
+	// Número de puntos a lo largo de la función senoidal
+	const int numPoints = 1200;
+	// Separación entre serpientes en el eje Z
+	const float separationZ = 33.4f;
+
+	// Calcular las coordenadas x, y, y z de la función senoidal para simular el movimiento de las serpientes
+	for (int i = 0; i <= numPoints; ++i) {
+		float t = (i / static_cast<float>(numPoints)) * length;
+
+		// Generar una serpiente con desfase para cada iteración
+		for (int j = 0; j < numWaves; ++j) {
+			float x = t; // Ajustar el valor del desfase horizontal aquí
+			float y = amplitude * sin(t + time ); // Onda en la vertical con desfase
+			float z = j * separationZ; // Ajustar la separación en el eje Z aquí
+			// Agregar las coordenadas al vector de vértices
+			vertices.push_back(x);
+			vertices.push_back(y);
+			vertices.push_back(z);
+		}
+	}
+}
+
 
 void getResolution()
 {
@@ -201,7 +229,45 @@ int main()
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
+	//Audio
+	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
+	printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+	return -1;
+	}
+	// Definición de los vértices del plano
+	std::vector<float> vertices ={
+	};
+	// Definición de los índices para GL_TRIANGLE_FAN
+	std::vector<unsigned int> indices = {};
+	indices.push_back(0);
 
+	// Agrega los índices para los vértices en sentido contrario a las agujas del reloj
+	for (unsigned int i = 19; i > 0; --i) {
+		indices.push_back(i);
+	}
+
+	// Agrega los índices para los vértices en sentido de las agujas del reloj
+	for (unsigned int i = 1; i <= 19; ++i) {
+		indices.push_back(i);
+	}
+	// Vertex Buffer Object (VBO) and Vertex Array Object (VAO)
+	glGenVertexArrays(1, &VAO[0]);
+	glGenBuffers(1, &VBO[0]);
+
+	glBindVertexArray(VAO[0]);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glBindVertexArray(0);
 	// configure global opengl state
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
@@ -211,6 +277,7 @@ int main()
 	Shader staticShader("Shaders/shader_Lights.vs", "Shaders/shader_Lights_mod.fs");
 	Shader skyboxShader("Shaders/skybox.vs", "Shaders/skybox.fs");
 	Shader animShader("Shaders/anim.vs", "Shaders/anim.fs");
+	Shader waterShader("Shaders/shaderAgua.vs", "Shaders/shaderAgua.fs");
 
 	vector<std::string> faces
 	{
@@ -228,14 +295,16 @@ int main()
 	// --------------------
 	skyboxShader.use();
 	skyboxShader.setInt("skybox", 0);
-
+	waterShader.use();
 	// load models
 	// -----------
-	
+	Model mapa("resources/objects/piso/mapa.obj");
 	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
 	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
-	Model piso("resources/objects/piso/piso.obj");
+	Model pisoMesas("resources/objects/piso/pisoMesas.obj");
+	Model recepcion("resources/objects/piso/recepcion.obj");
 
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 	Model avionAmarillo("resources/objects/avionAmarillo/avionAmarillo.obj");
 	Model avionDespegue("resources/objects/avionDespegue/avionDespegue.obj");
 	Model avionGuerra("resources/objects/avionGuerra/avionGuerra.obj");
@@ -254,9 +323,29 @@ int main()
 
 
 	// Ojala se cambie algo
+=======
+	float time = 0.0f;
+	
+>>>>>>> 72a9c6931918ff8703df6a7c95e032166ad6124a:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
+	//// Audio
+	SDL_AudioSpec spec;
+	Uint32 lengthAudio;
+	Uint8* buffer;
+	spec.freq = 44100;  // Frecuencia de muestreo
+	spec.format = AUDIO_S16SYS;  // Formato de audio (16 bits, little-endian)
+	spec.channels = 2;  // Número de canales (estéreo)
+	spec.samples = 1024;  // Tamaño del búfer de audio
+	if (SDL_LoadWAV("resources/audio/wave.wav", &spec, &buffer, &lengthAudio) == NULL) {
+		printf("No se pudo cargar el archivo de sonido: %s\n", SDL_GetError());
+		return -1;
+	}
+	// Abrir el dispositivo de audio
+	if (SDL_OpenAudio(&spec, NULL) < 0) {
+		printf("SDL could not open audio: %s\n", SDL_GetError());
+		return -1;
+	}
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -271,7 +360,11 @@ int main()
 		// -----
 		//my_input(window);
 		animate();
-
+		SDL_PauseAudio(0);
+		if (audioPlaying && SDL_GetAudioStatus() != SDL_AUDIO_PLAYING) {
+			SDL_QueueAudio(1, buffer, lengthAudio);
+			SDL_PauseAudio(0);  // Iniciar la reproducción
+		}
 		// render
 		// ------
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -322,7 +415,24 @@ int main()
 		glm::mat4 view = camera.GetViewMatrix();
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
-
+		
+		waterShader.use();
+		generateWaves(vertices,indices, 10, 199.0f, 0.4, time);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+		model = glm::translate(model, glm::vec3(-100.0f,-1.3f,-400));
+		waterShader.setMat4("model", model);
+		waterShader.setFloat("time", glfwGetTime());
+		waterShader.setMat4("projection", projection);
+		waterShader.setMat4("view", view);
+		waterShader.setVec3("waterColor", glm::vec3(0.18f, 0.83f, 0.80f));
+		// draw the triangle
+		glBindVertexArray(VAO[0]);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO[0]);
+		// Establecer el grosor de la línea
+		glLineWidth(15.0f);
+		glDrawArrays(GL_LINE_STRIP, 0, vertices.size() / 3);
+		time += 0.1;
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Personaje Animacion
@@ -353,7 +463,7 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
-		piso.Draw(staticShader);
+		mapa.Draw(staticShader);
 
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(130.0f,.1f, -300.0f));
@@ -400,6 +510,7 @@ int main()
 		staticShader.setMat4("model", model);
 		pisoCercas.Draw(staticShader);
 
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.0f, 10.0f, -170.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.85f));
@@ -449,7 +560,19 @@ int main()
 		model = glm::scale(model, glm::vec3(3.0f));
 		staticShader.setMat4("model", model);
 		luminaris.Draw(staticShader);
+=======
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		pisoMesas.Draw(staticShader);
+>>>>>>> 72a9c6931918ff8703df6a7c95e032166ad6124a:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.cpp
 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f));
+		staticShader.setMat4("model", model);
+		recepcion.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -473,8 +596,14 @@ int main()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+	// clean up resources
+	glDeleteVertexArrays(1, &VAO[0]);
+	glDeleteBuffers(1, &VBO[0]);
 
 	skybox.Terminate();
+	// Cerrar SDL
+	///*SDL_CloseAudio();
+	//SDL_FreeWAV(buffer);*/
 
 	glfwTerminate();
 	return 0;
@@ -494,6 +623,15 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS && action == GLFW_PRESS) {
+		audioPlaying = !audioPlaying;
+		if (!audioPlaying) {
+			SDL_PauseAudio(1);  // Pausar la reproducción
+		}
+	}
+	std::cout << "X: " << camera.Position.x;
+	std::cout << "Y: " << camera.Position.y;
+	std::cout << "Z: " << camera.Position.z << std::endl;
 }
 
 
