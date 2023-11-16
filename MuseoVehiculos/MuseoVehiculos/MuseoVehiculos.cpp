@@ -72,10 +72,8 @@ rotInc = 0.0f,
 giroMonitoInc = 0.0f;
 
 // camera
-<<<<<<< HEAD
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
-=======
-Camera camera(glm::vec3(0.0f, 50.0f, 290.0f));
+
+Camera camera(glm::vec3(0.0f,30.0f,-20.0f));
 >>>>>>> origin/branchAlejandro
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
@@ -563,31 +561,19 @@ int main()
 
 	float time = 0.0f;
 =======
-	//Model pisoCercas("resources/objects/piso/pisoCercas.obj");
+	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model piso("resources/objects/piso/piso.obj");
-	//Model Auto("resources/objects/auto/auto.obj");
+	Model Auto("resources/objects/auto/auto.obj");
 
 	Model auto3("resources/objects/auto3/auto3.obj");
 	//Model auto8("resources/objects/auto8/auto8.obj");
-	//Model Cadillac("resources/objects/Cadillac/cadilla.obj");
+	Model Cadillac("resources/objects/Cadillac/cadilla.obj");
 	//Model vespacial("resources/objects/vespacial/vehiculoespacial.obj");
 
 	ModelAnim animacionPersonaje("resources/objects/Walking/Walking.dae");
-	//animacionPersonaje.initShaders(animShader.ID);
+	animacionPersonaje.initShaders(animShader.ID);
 
-	//ModelAnim animacionPersonaje1("resources/objects/WalkForward/WalkForward.dae");
-	//animacionPersonaje1.initShaders(animShader.ID);
 
-	//ModelAnim animacionPersonaje2("resources/objects/KneelingPointing/KneelingPointing.dae");
-	//animacionPersonaje2.initShaders(animShader.ID);
->>>>>>> origin/branchAlejandro
-
-	// draw in wireframe
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//// Audio
-	// 
-	// render loop
-	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
 		skyboxShader.setInt("skybox", 0);
@@ -745,7 +731,7 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
-		//pisoCercas.Draw(staticShader);
+		pisoCercas.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-45.0f, 10.0f, -170.0f));
 		model = glm::rotate(model, glm::radians(135.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -839,7 +825,7 @@ int main()
 
 			// auto
 		// -------------------------------------------------------------------------------------------------------------------------
-		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
@@ -847,10 +833,8 @@ int main()
 		staticShader.setMat4("model", model);
 		Auto.Draw(staticShader);
 
-		*/
-
-		// Cadillac
-		// -------------------------------------------------------------------------------------------------------------------------
+		 Cadillac
+		 -------------------------------------------------------------------------------------------------------------------------
 		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(-35.0f + movAuto_x, -1.0f, movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -858,21 +842,8 @@ int main()
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
 		staticShader.setMat4("model", model);
 		Cadillac.Draw(staticShader);*/
-		// -------------------------------------------------------------------------------------------------------------------------
+		 -------------------------------------------------------------------------------------------------------------------------
 
-		// Vespacial
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-85.0f + movAuto_x, 1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
-		staticShader.setMat4("model", model);
-		vespacial.Draw(staticShader);*/
-		// ----------------------------
-		//-------------------------------------------------------------------------------------
-		// draw skybox as last
-		// -------------------
 		skyboxShader.use();
 		skybox.Draw(skyboxShader, view, projection, camera);
 
