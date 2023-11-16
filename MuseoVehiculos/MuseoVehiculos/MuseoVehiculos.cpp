@@ -130,6 +130,9 @@ void animate(void)
 				estadoAvion = 2;
 			}
 		}
+		if (estadoAvion == 2) {
+
+		}
 
 	}
 
