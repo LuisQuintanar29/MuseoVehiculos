@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MuseoVehiculos", "MuseoVehiculos\MuseoVehiculos.vcxproj", "{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}"
+=======
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MuseoVehiculos", "MuseoVehiculos\MuseoVehiculos.vcxproj", "{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}"
+>>>>>>> 4a742607f3ee2bfb9ea5eba48387bb54ad166e71:MuseoVehiculos/MuseoVehiculos.sln
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Debug|x64.ActiveCfg = Debug|Win32
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Debug|x64.Build.0 = Debug|Win32
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Debug|x86.ActiveCfg = Debug|Win32
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Debug|x86.Build.0 = Debug|Win32
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Release|x64.ActiveCfg = Release|x64
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Release|x64.Build.0 = Release|x64
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Release|x86.ActiveCfg = Release|Win32
+		{5CAB0F60-0E8D-45A9-93A8-CA04B0C8650F}.Release|x86.Build.0 = Release|Win32
+=======
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Debug|x64.ActiveCfg = Debug|x64
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Debug|x64.Build.0 = Debug|x64
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Debug|x86.ActiveCfg = Debug|Win32
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Debug|x86.Build.0 = Debug|Win32
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Release|x64.ActiveCfg = Release|x64
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Release|x64.Build.0 = Release|x64
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Release|x86.ActiveCfg = Release|Win32
+		{92FA7AD5-A25F-4F4B-9B53-033DAFE1FDFA}.Release|x86.Build.0 = Release|Win32
+>>>>>>> 4a742607f3ee2bfb9ea5eba48387bb54ad166e71:MuseoVehiculos/MuseoVehiculos.sln
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD:MuseoVehiculos/MuseoVehiculos/MuseoVehiculos.sln
+		SolutionGuid = {07112DF6-5662-4F76-9970-7D3EEF388BBF}
+=======
+		SolutionGuid = {521CE0DC-B3A1-4812-BAE0-49B3508C9BCD}
+>>>>>>> 4a742607f3ee2bfb9ea5eba48387bb54ad166e71:MuseoVehiculos/MuseoVehiculos.sln
+	EndGlobalSection
+EndGlobal
