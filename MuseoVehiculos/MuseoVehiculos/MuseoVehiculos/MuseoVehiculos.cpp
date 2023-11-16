@@ -130,18 +130,6 @@ void animate(void)
 				estadoAvion = 2;
 			}
 		}
-		if (estadoAvion == 2) {
-			angulo -= 0.01;
-			avionMovX = 55 * cos(angulo) - 55;
-			avionMovZ = sqrt((55 * 55) - (cos(angulo) * cos(angulo))) * sin(angulo) - 131;
-
-
-			std::cout << "X: " << avionMovX << ", Z: " << avionMovZ << ", Angulo: " << angulo << std::endl;
-			if (avionMovX <= -109.0f) {
-				estadoAvion = 3;
-			}
-
-		}
 
 	}
 
@@ -470,7 +458,7 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f + avionMovX, 0.0f + avionMovY, 0.0f + avionMovZ));
 		model = glm::rotate(model, glm::radians(orientacionAvionY), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(orientacionAvionX), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30s.0f));
+		model = glm::scale(model, glm::vec3(30.0f));
 		staticShader.setMat4("model", model);
 		avionDespegue.Draw(staticShader);
 
