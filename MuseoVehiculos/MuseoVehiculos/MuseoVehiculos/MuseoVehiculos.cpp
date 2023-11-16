@@ -36,6 +36,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void my_input(GLFWwindow* window, int key, int scancode, int action, int mods);
 void animate(void);
 
+float posicionX, posicionY, posicionZ = 0.0f;
 // settings
 unsigned int SCR_WIDTH = 800;
 unsigned int SCR_HEIGHT = 600;
@@ -44,7 +45,7 @@ GLuint VBO[2], VAO[2], EBO[2];
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
+Camera camera(glm::vec3(0.0f, 0.0f,	10.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -84,12 +85,13 @@ int i_max_steps = 60;
 int i_curr_steps = 0;
 typedef struct _frame
 {
-	//Variables para GUARDAR Key Frames
-	float posX; //Variable para PosicionX
-	float posY;//Variable para PosicionY
-	float posZ;//Variable para PosicionZ
-	float rotRodIzq;
-	float giroMonito;
+	float posOpelX = 0.0f;
+	float posOpelY = 0.0f;
+	float posOpelZ = 0.0f;
+	float rotOpelRueda = 0.0f;
+	float rotOpelY = 0.0f;
+	float rotOpelFaro = 0.0f;
+	float rotOpelPuerta = 0.0f;
 
 }FRAME;
 
@@ -97,12 +99,79 @@ FRAME KeyFrame[MAX_FRAMES];
 int FrameIndex = 0;//introducir número en caso de tener Key guardados
 bool play = false;
 int playIndex = 0;
+//
+//Keyframes (Manipulación y dibujo)
+float	posOpelX = 0.0f,
+posOpelY = 0.0f,
+posOpelZ = 0.0f,
+rotOpelRueda = 0.0f,
+rotOpelY = 0.0f,
+rotOpelFaro = 0.0f,
+rotOpelPuerta = 0.0f;
+int		incPosOpelX = 0,
+incPosOpelY = 0,
+incPosOpelZ = 0,
+incRotOpelRueda = 0,
+incRotOpelY = 0,
+incRotOpelFaro = 0,
+incRotOpelPuerta = 0;
+
+void resetElements(void)
+{
+	posOpelX = KeyFrame[0].posOpelX;
+	posOpelY = KeyFrame[0].posOpelY;
+	posOpelZ = KeyFrame[0].posOpelZ;
+	rotOpelRueda = KeyFrame[0].rotOpelRueda;
+	rotOpelY = KeyFrame[0].rotOpelY;
+	rotOpelFaro = KeyFrame[0].rotOpelFaro;
+	rotOpelPuerta = KeyFrame[0].rotOpelPuerta;
+}
+//
+void interpolation(void)
+{
+	incPosOpelX = (KeyFrame[playIndex + 1].posOpelX - KeyFrame[playIndex].posOpelX) / i_max_steps;
+		incPosOpelY = (KeyFrame[playIndex+1].posOpelY - KeyFrame[playIndex].posOpelY)/i_max_steps;
+		incPosOpelZ = (KeyFrame[playIndex+1].posOpelZ - KeyFrame[playIndex].posOpelZ)/i_max_steps;
+		incRotOpelRueda = (KeyFrame[playIndex+1].rotOpelRueda - KeyFrame[playIndex].rotOpelRueda)/i_max_steps;
+		incRotOpelY = (KeyFrame[playIndex+1].rotOpelY - KeyFrame[playIndex].rotOpelY)/i_max_steps;
+		incRotOpelFaro = (KeyFrame[playIndex+1].rotOpelFaro - KeyFrame[playIndex].rotOpelFaro)/i_max_steps;
+		incRotOpelPuerta = (KeyFrame[playIndex+1].rotOpelPuerta - KeyFrame[playIndex].rotOpelPuerta)/i_max_steps;
+}
+
 
 void animate(void)
 {
 	if (play)
 	{
-
+		if (i_curr_steps >= i_max_steps) //end of animation between frames?
+		{
+			playIndex++;
+			if (playIndex > FrameIndex - 2)	//end of total animation?
+			{
+				std::cout << "Animation ended" << std::endl;
+				//printf("termina anim\n");
+				playIndex = 0;
+				play = false;
+			}
+			else //Next frame interpolations
+			{
+				i_curr_steps = 0; //Reset counter
+				//Interpolation
+				interpolation();
+			}
+		}
+		else
+		{
+			//Draw animation
+				posOpelX += incPosOpelX;
+				posOpelY += incPosOpelX;
+				posOpelZ += incPosOpelZ;
+				rotOpelRueda += incRotOpelRueda;
+				rotOpelY += incRotOpelY;
+				rotOpelFaro += incRotOpelFaro;
+				rotOpelPuerta += incRotOpelPuerta;
+			i_curr_steps++;
+		}
 
 	}
 
@@ -177,7 +246,6 @@ void getResolution()
 	SCR_WIDTH = mode->width;
 	SCR_HEIGHT = (mode->height) - 80;
 }
-
 
 int main()
 {
@@ -307,7 +375,59 @@ int main()
 	Model vaisseau("resources/objects/Vaisseau/vassieau.obj");
 	Model cruceroEspacial("resources/objects/cruceroEspacial/cruceroEspacial.obj");
 	Model luminaris("resources/objects/Luminaris/luminaris.obj");
+	
+	//Modelos Opel
+	Model OpelCarr("resources/objects/opelGt/carro.obj");
+	Model OpelPuertaDer("resources/objects/opelGt/puertaDer.obj");
+	Model OpelPuertaIzq("resources/objects/opelGt/puertaIzq.obj");
+	Model OpelRueda("resources/objects/opelGt/ruedaIzq.obj");
+	Model OpelFaro("resources/objects/opelGt/faroDer.obj");
+	Model OpelCapo("resources/objects/opelGt/capo.obj");
 
+	//Inicialización de KeyFrames
+
+	for (int i = 0; i < MAX_FRAMES; i++)
+	{
+		KeyFrame[i].posOpelX=0;
+		KeyFrame[i].posOpelY=0;
+		KeyFrame[i].posOpelZ=0;
+		KeyFrame[i].rotOpelRueda=0;
+		KeyFrame[i].rotOpelY=0;
+		KeyFrame[i].rotOpelFaro =0;
+		KeyFrame[i].rotOpelPuerta=0;
+	}
+
+	KeyFrame[0].posOpelX = 0;
+	KeyFrame[0].posOpelY = 0;
+	KeyFrame[0].posOpelZ = 0;
+	KeyFrame[0].rotOpelRueda = 0;
+	KeyFrame[0].rotOpelY = 0;
+	KeyFrame[0].rotOpelFaro = 0;
+	KeyFrame[0].rotOpelPuerta = 0;
+
+	KeyFrame[1].posOpelX = 0;
+	KeyFrame[1].posOpelY = 0;
+	KeyFrame[1].posOpelZ = 0;
+	KeyFrame[1].rotOpelRueda = 0;
+	KeyFrame[1].rotOpelY = 0;
+	KeyFrame[1].rotOpelFaro = 0;
+	KeyFrame[1].rotOpelPuerta = 0;
+
+	KeyFrame[2].posOpelX = 0;
+	KeyFrame[2].posOpelY = 0;
+	KeyFrame[2].posOpelZ = 0;
+	KeyFrame[2].rotOpelRueda = 0;
+	KeyFrame[2].rotOpelY = 0;
+	KeyFrame[2].rotOpelFaro = 0;
+	KeyFrame[2].rotOpelPuerta = 0;
+
+	KeyFrame[0].posOpelX = 0;
+	KeyFrame[0].posOpelY = 0;
+	KeyFrame[0].posOpelZ = 0;
+	KeyFrame[0].rotOpelRueda = 0;
+	KeyFrame[0].rotOpelY = 0;
+	KeyFrame[0].rotOpelFaro = 0;
+	KeyFrame[0].rotOpelPuerta = 0;
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	// render loop
@@ -529,6 +649,76 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		recepcion.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-199.4f, 0.0f, -97.9f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelCarr.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelPuertaDer.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelPuertaIzq.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model); //der
+		OpelFaro.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-207.0f, 0.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model); //izq
+		OpelFaro.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model); //der
+		OpelCapo.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-189.0f, -0.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelRueda.Draw(staticShader);  // delante Izq
+		
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3 ( -200.0f, -0.0f, -100.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelRueda.Draw(staticShader);  // delante Der
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-189.0f, -0.0f, -121.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelRueda.Draw(staticShader);  // tras Izq
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200.0, -0.0f, -121.0f));
+		model = glm::scale(model, glm::vec3(3.0f));
+		staticShader.setMat4("model", model);
+		OpelRueda.Draw(staticShader);  // tras Der
+
+		//model = glm::translate(model, glm::vec3(0.0f, -100.75f, 0.0f));
+		//model = glm::scale(model, glm::vec3(10.0f));
+		//staticShader.setMat4("model", model);
+		//OpelRueda.Draw(staticShader);  // atras Izq
+
+		//model = glm::translate(model, glm::vec3(0.0f, -100.75f, 0.0f));
+		//model = glm::scale(model, glm::vec3(10.0f));
+		//staticShader.setMat4("model", model);
+		//OpelRueda.Draw(staticShader);  // atras Der
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -579,6 +769,21 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
+	
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+		posicionX+= 0.1;
+	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
+		posicionX-= 0.1;
+	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+		posicionY+= 0.1;
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
+		posicionY-= 0.1;
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
+		posicionZ+= 0.1;
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+		posicionZ-= 0.1;
+
+
 }
 
 
