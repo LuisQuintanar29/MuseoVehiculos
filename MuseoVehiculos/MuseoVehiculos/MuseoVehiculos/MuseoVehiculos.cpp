@@ -52,7 +52,8 @@ float	movP_x = 0.0f,
 		giro = 180.0f,
 		movAuto_x = 0.0f,
 		movAuto_z = 0.0f,
-		orienta = 0.0f;
+		orienta = 0.0f,
+		ori = 0.0f;
 
 bool	animacion = false;
 bool	anim = false;
@@ -254,27 +255,34 @@ void animate(void)
 	if (!anim)
 	{
 		if (recorrido == 0)
-		{
-			movP_z -= 1.0f;
-			giro = 180.0f; 
-			if (movP_z <= -100.0)
-				recorrido = 1;
-		}
+		
+			{
+				movP_z -= 0.5f;
+				giro = 180.0f;
+				if (movP_z <= -90.0) 
+				{
+					recorrido = 1;
+				}
+
+			}
 
 		if (recorrido == 1)
 		{
 			movP_x -= 0.5f;
 			giro = 270.0f;
-			if (movP_x <= -110.0)
+			if (movP_x <= -110.0) {
 				recorrido = 2;
+			}
 		}
 
 		if (recorrido == 2)
 		{
 			movP_z -= 0.5f;
 			giro = 180.0f;
-			if (movP_z <= -150.0)
+			if (movP_z <= -150.0) {
+			
 				recorrido = 3;
+			}
 		}
 
 		if (recorrido == 3)
@@ -282,6 +290,7 @@ void animate(void)
 			movP_x -= 0.5f;
 			giro = 270.0f;
 			if (movP_x <= -180.0)
+				
 				recorrido = 4;
 		}
 
@@ -290,15 +299,54 @@ void animate(void)
 			movP_z -= 0.5f;
 			giro = 180.0f;
 			if (movP_z <= -250.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
 				recorrido = 5;
+			
 		}
 
 		if (recorrido == 5)
 		{
 			movP_x += 0.5f;
 			giro = 90.0f;
-			if (movP_x <= -100.0)
+			if (movP_x >= -110.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
 				recorrido = 6;
+		}
+
+		if (recorrido == 6)
+		{
+			movP_z -= 0.5f;
+			giro = 180.0f;
+			if (movP_z <= -500.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
+				recorrido = 7;
+		}
+
+		if (recorrido == 7)
+		{
+			movP_x += 0.5f;
+			giro = 90.0f;
+			if (movP_x >= 300.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
+				recorrido = 8;
+		}
+
+		if (recorrido == 8)
+		{
+			movP_z += 0.5f;
+			giro = 0.0f;
+			if (movP_z >= 75.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
+				recorrido = 9;
+		}
+
+		if (recorrido == 9)
+		{
+			movP_x -= 0.5f;
+			giro = 270.0f;
+			if (movP_x <= 50.0)
+				//std::cout << "movP_x" << movP_x << "movP_z" << movP_x << std::endl;
+				recorrido = 0;
 		}
 	}
 
@@ -489,22 +537,22 @@ int main()
 	// -----------
 	Model mapa("resources/objects/piso/mapa.obj");
 	Model pisoArbustos("resources/objects/piso/pisoArbustos.obj");
+	Model recepcion("resources/objects/piso/recepcion.obj");
 
 	//Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model piso("resources/objects/piso/piso.obj");
-
+	
 	Model Auto("resources/objects/auto/auto.obj");
 	Model auto3("resources/objects/auto3/auto3.obj");
-	Model auto6("resources/objects/auto6/auto6.obj");
-	Model auto8("resources/objects/auto8/auto8.obj");
-	Model vespacial("resources/objects/vespacial/vehiculoespacial.obj");
+	Model auto2("resources/objects/auto3/auto3.obj");
+
+	//Model vespacial("resources/objects/vespacial/vehiculoespacial.obj");
 	Model Cadillac("resources/objects/Cadillac/cadilla.obj");
 
 	//ModelAnim animacionPersonaje("resources/objects/Walking/Walking.dae");
 	//animacionPersonaje.initShaders(animShader.ID);
 
-	//ModelAnim animacionPersonaje1("resources/objects/WalkForward/WalkForward.dae");
-	//animacionPersonaje1.initShaders(animShader.ID);
+	
 
 	//ModelAnim animacionPersonaje2("resources/objects/KneelingPointing/KneelingPointing.dae");
 	//animacionPersonaje2.initShaders(animShader.ID);
@@ -516,7 +564,7 @@ int main()
 	/*
 	Model pisoCercas("resources/objects/piso/pisoCercas.obj");
 	Model pisoMesas("resources/objects/piso/pisoMesas.obj");
-	Model recepcion("resources/objects/piso/recepcion.obj");
+	
 
 	Model avionAmarillo("resources/objects/avionAmarillo/avionAmarillo.obj");
 	Model avionDespegue("resources/objects/avionDespegue/avionDespegue.obj");
@@ -634,7 +682,7 @@ int main()
 		animShader.setVec3("viewPos", camera.Position);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f + movP_x, 0.0f, 20.0f + movP_z)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.1f));	// it's a bit too big for our scene, so scale it down
+		model = glm::scale(model, glm::vec3(0.07f));	// it's a bit too big for our scene, so scale it down
 		model = glm::rotate(model, glm::radians(giro), glm::vec3(0.0f, 1.0f, 0.0f));
 		animShader.setMat4("model", model);
 		//animacionPersonaje.Draw(animShader);
@@ -651,52 +699,46 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f));
 		staticShader.setMat4("model", model);
 		mapa.Draw(staticShader);
-
+		
 		// auto
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::translate(model, glm::vec3(-5.0f , -1.0f, -200 ));
+		tmp = model = glm::rotate(model, glm::radians(ori), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.004f, 0.004f, 0.004f));
 		staticShader.setMat4("model", model);
-		Auto.Draw(staticShader);
+		//Auto.Draw(staticShader);
 		
-		// auto6
+		// auto2
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::translate(model, glm::vec3(-15.0f , -1.0f, -200 ));
+		tmp = model = glm::rotate(model, glm::radians(ori), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.004f, 0.004f, 0.004f));
 		staticShader.setMat4("model", model);
-		auto6.Draw(staticShader);
-
-		// auto8
-		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-170.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		staticShader.setMat4("model", model);
-		auto8.Draw(staticShader);
+		//auto2.Draw(staticShader);
+		
+		
 
 		// Cadillac
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-35.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+		//model = glm::translate(model, glm::vec3(-28.0f + movAuto_x, -1.0f, 345.0 + movAuto_z));
+		model = glm::translate(model, glm::vec3(-30.0f , -1.0f, -200));
+		tmp = model = glm::rotate(model, glm::radians(ori), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f));
 		staticShader.setMat4("model", model);
 		Cadillac.Draw(staticShader);
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		// Vespacial
+		/*// Vespacial
 		// -------------------------------------------------------------------------------------------------------------------------
 		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(-85.0f + movAuto_x, 1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+		tmp = model = glm::rotate(model, glm::radians(ori), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.01f, 0.01, 0.01));
 		staticShader.setMat4("model", model);
-		vespacial.Draw(staticShader);/**/
+		vespacial.Draw(staticShader);*/
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(130.0f,.1f, -300.0f));
 		//model = glm::rotate(model, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -809,13 +851,13 @@ int main()
 		//AUTOMOVILES
 		// auto3
 		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		/*model = glm::rotate(glm::mat4(1.0f), glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(-28.0f + movAuto_x, -1.0f, 345.0 + movAuto_z));
 		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.004f));
 		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.9f));
 		staticShader.setMat4("model", model);
-		auto3.Draw(staticShader);
+		auto3.Draw(staticShader);*/
 
 		
 		
@@ -894,19 +936,22 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 
 	if (key == GLFW_KEY_Z && action == GLFW_PRESS)
 	{
+
 		recorrido = 0;
+		movP_x = 0.0f;
+		movP_z = 0.0f;
 		anim = true;
 
 	}
 
 	if (key == GLFW_KEY_M && action == GLFW_PRESS)
 	{
-		animacion = false;
+		anim = false;
 		recorrido = 0;
-		anim = !anim;
-		circuito_auto = 0;
-
+		
 	}
+
+	
 	std::cout << "X: " << camera.Position.x;
 	std::cout << "Y: " << camera.Position.y;
 	std::cout << "Z: " << camera.Position.z << std::endl;
